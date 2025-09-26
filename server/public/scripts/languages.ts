@@ -8,10 +8,66 @@ const fetchLanguages = async () => {
   return response.json();
 };
 
-const createMetaParagraph = (label, value) => {
-  const paragraph = document.createElement("p");
-  paragraph.innerHTML = `<span>${label}:</span> ${value}`;
-  return paragraph;
+const createChip = (text) => {
+  const chip = document.createElement("span");
+  chip.className = "language-chip";
+  chip.textContent = text;
+  return chip;
+};
+
+const populateChips = (container, rawValue) => {
+  if (!container) {
+    return;
+  }
+
+  container.replaceChildren();
+
+  if (!rawValue) {
+    container.textContent = "Not specified";
+    return;
+  }
+
+  rawValue
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .forEach((item) => container.appendChild(createChip(item)));
+};
+
+const createLanguageCard = (language) => {
+  const card = document.createElement("article");
+  card.className = "language-card";
+
+  const figure = document.createElement("figure");
+  const image = document.createElement("img");
+  image.src = language.image;
+  image.alt = `${language.name} logo`;
+  figure.appendChild(image);
+
+  const title = document.createElement("h2");
+  title.textContent = language.name;
+
+  const description = document.createElement("p");
+  description.className = "muted";
+  description.textContent = language.description;
+
+  const metadata = document.createElement("ul");
+  const paradigmItem = document.createElement("li");
+  paradigmItem.innerHTML = `<strong>Paradigm:</strong> ${language.paradigm}`;
+  const typingItem = document.createElement("li");
+  typingItem.innerHTML = `<strong>Typing:</strong> ${language.typing}`;
+  const firstAppearedItem = document.createElement("li");
+  firstAppearedItem.innerHTML = `<strong>First appeared:</strong> ${language.firstAppeared}`;
+  metadata.append(paradigmItem, typingItem, firstAppearedItem);
+
+  const link = document.createElement("a");
+  link.href = `/languages/${language.id}`;
+  link.textContent = "View details";
+  link.setAttribute("role", "button");
+  link.className = "secondary";
+
+  card.append(figure, title, description, metadata, link);
+  return card;
 };
 
 const renderLanguages = async () => {
@@ -24,40 +80,28 @@ const renderLanguages = async () => {
 
     mainContent.replaceChildren();
 
+    const heading = document.createElement("h1");
+    heading.textContent = "Programming Languages";
+
+    const lead = document.createElement("p");
+    lead.className = "muted";
+    lead.textContent =
+      "Browse foundational and modern programming languages with quick reference details.";
+
+    const grid = document.createElement("div");
+    grid.className = "language-grid";
+
+    mainContent.append(heading, lead, grid);
+
     if (!data?.length) {
       const noLanguagesMsg = document.createElement("h2");
-      noLanguagesMsg.textContent = "No Languages Available 😞";
-      mainContent.appendChild(noLanguagesMsg);
+      noLanguagesMsg.textContent = "No languages available";
+      grid.replaceChildren(noLanguagesMsg);
       return;
     }
 
     data.forEach((language) => {
-      const card = document.createElement("div");
-      card.classList.add("card");
-
-      const topContainer = document.createElement("div");
-      topContainer.classList.add("top-container");
-      topContainer.style.backgroundImage = `url(${language.image})`;
-
-      const bottomContainer = document.createElement("div");
-      bottomContainer.classList.add("bottom-container");
-
-      const title = document.createElement("h3");
-      title.textContent = language.name;
-
-      const paradigm = createMetaParagraph("Paradigm", language.paradigm);
-      const firstAppeared = createMetaParagraph(
-        "First Appeared",
-        language.firstAppeared
-      );
-
-      const link = document.createElement("a");
-      link.textContent = "Explore >";
-      link.href = `/languages/${language.id}`;
-
-      bottomContainer.append(title, paradigm, firstAppeared, link);
-      card.append(topContainer, bottomContainer);
-      mainContent.appendChild(card);
+      grid.appendChild(createLanguageCard(language));
     });
   } catch (error) {
     console.error("Failed to render languages", error);
@@ -87,7 +131,7 @@ const renderLanguage = async () => {
     const image = document.getElementById("image");
     if (image instanceof HTMLImageElement) {
       image.src = language.image;
-      image.alt = language.name;
+      image.alt = `${language.name} logo`;
     }
 
     const name = document.getElementById("name");
@@ -95,30 +139,28 @@ const renderLanguage = async () => {
       name.textContent = language.name;
     }
 
-    const designedBy = document.getElementById("designedBy");
-    if (designedBy) {
-      designedBy.innerHTML = `<span>Designed By:</span> ${language.designedBy}`;
-    }
-
-    const firstAppeared = document.getElementById("firstAppeared");
-    if (firstAppeared) {
-      firstAppeared.innerHTML = `<span>First Appeared:</span> ${language.firstAppeared}`;
-    }
-
-    const typing = document.getElementById("typing");
-    if (typing) {
-      typing.innerHTML = `<span>Typing Discipline:</span> ${language.typing}`;
-    }
-
-    const paradigm = document.getElementById("paradigm");
-    if (paradigm) {
-      paradigm.innerHTML = `<span>Paradigm:</span> ${language.paradigm}`;
-    }
-
     const description = document.getElementById("description");
     if (description) {
       description.textContent = language.description;
     }
+
+    const designedBy = document.getElementById("designedBy");
+    if (designedBy) {
+      designedBy.textContent = language.designedBy || "Unknown";
+    }
+
+    const firstAppeared = document.getElementById("firstAppeared");
+    if (firstAppeared) {
+      firstAppeared.textContent = language.firstAppeared
+        ? String(language.firstAppeared)
+        : "N/A";
+    }
+
+    const paradigmChips = document.getElementById("paradigmChips");
+    populateChips(paradigmChips, language.paradigm);
+
+    const typingBadges = document.getElementById("typingBadges");
+    populateChips(typingBadges, language.typing);
 
     document.title = `Language Library - ${language.name}`;
   } catch (error) {
