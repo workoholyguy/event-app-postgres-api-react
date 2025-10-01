@@ -4,7 +4,7 @@ Submitted by: **Omar Madjitov**
 
 About this web app: **Language Library is a PostgreSQL-backed catalog of programming languages that serves a responsive list and detailed views powered by an Express API.**
 
-Time spent: **~8** hours (estimated)
+Time spent: **8** hours 
 
 ## Required Features
 
@@ -13,8 +13,8 @@ The following **required** functionality is completed:
 <!-- Make sure to check off completed functionality below -->
 - [x] **The web app uses only HTML, CSS, and JavaScript without a frontend framework**
 - [x] **The web app is connected to a PostgreSQL database, with an appropriately structured database table for the list items**
-  - [ ] **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
-  - [ ]  **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command 'SELECT * FROM tablename;' to display your table contents.**
+  - [x] **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
+  - [x]  **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command 'SELECT * FROM tablename;' to display your table contents.**
 
 
 The following **optional** features are implemented:
