@@ -1,48 +1,55 @@
-# WEB103 Project 2 - Language Library
+# WEB103 Project 3 - *Solstice Events*
 
-Submitted by: **Omar Madjitov**
+Submitted by: **Omar Djalo**
 
-About this web app: **Language Library is a PostgreSQL-backed catalog of programming languages that serves a responsive list and detailed views powered by an Express API.**
+About this web app: **A single-page event discovery experience that pulls curated happenings from a PostgreSQL database into a React front end. Users can search, filter by neighborhood, and browse immersive event cards with hover-to-reveal details.**
 
-Time spent: **8** hours 
+Time spent: **~14 hours**
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-<!-- Make sure to check off completed functionality below -->
-- [x] **The web app uses only HTML, CSS, and JavaScript without a frontend framework**
-- [x] **The web app is connected to a PostgreSQL database, with an appropriately structured database table for the list items**
-  - [x] **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
+- [x] **The web app uses React to display data from the API**
+- [x] **The web app is connected to a PostgreSQL database, with an appropriately structured Events table**
+  - [x]  **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
   - [x]  **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command 'SELECT * FROM tablename;' to display your table contents.**
+- [x] **The web app displays a title.**
+- [x] **Website includes a visual interface that allows users to select a location they would like to view.**
+  - [x] *Note: A non-visual list of links to different locations is insufficient.* 
+- [x] **Each location has a detail page with its own unique URL.**
+- [x] **Clicking on a location navigates to its corresponding detail page and displays list of all events from the `events` table associated with that location.**
 
+## Optional Features
 
 The following **optional** features are implemented:
 
-- [ ] The user can search for items by a specific attribute
+- [x] An additional page shows all possible events
+  - [x] Users can sort *or* filter events by location.
+- [ ] Events display a countdown showing the time remaining before that event
+  - [ ] Events appear with different formatting when the event has passed (ex. negative time, indication the event has passed, crossed out, etc.).
 
-The following **additional** features are implemented:
+## Additional Features
 
-- [x] Dedicated detail pages render paradigm and typing data as interactive chips for quick scanning
-- [x] Custom 404 page keeps users inside the experience when a language is not found
+- [x] Added PicoCSS Styling 
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented required features:
 
-<img src='https://imgur.com/a/Of71lJG' title='Video Walkthrough' width='270px' alt='Video Walkthrough' />
-<img src='https://imgur.com/a/Of71lJG.gif' title='Video Walkthrough' width='270px' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with QuickTime Player (macOS screen recording)
+GIF created with MacOS Screen Record
 
 ## Notes
 
-Connecting the Express server to the Render-hosted PostgreSQL instance required refining SSL settings and reseeding to keep the local data synced with the hosted database.
+- Wiring the React client to the Express/Postgres backend required debugging proxy paths when legacy routes were still referenced.
+- Styling pivots: migrated from a custom gradient-heavy theme back to PicoCSS while keeping interactive card overlays accessible with focus states.
 
 ## License
 
-Copyright [2025] [Omar Madjitov]
+Copyright 2025 Omar Madjitov
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 

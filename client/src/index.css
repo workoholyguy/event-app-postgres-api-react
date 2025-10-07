@@ -1,0 +1,25 @@
+:root {
+  --pico-font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --pico-color: rgba(248, 250, 252, 0.95);
+  --pico-muted-color: rgba(226, 232, 240, 0.78);
+  --pico-primary: #60a5fa;
+  --pico-secondary: #f472b6;
+  --pico-background-color: #05060f;
+  --pico-card-background-color: rgba(15, 23, 42, 0.72);
+  --pico-form-element-background-color: rgba(15, 23, 42, 0.6);
+  --pico-form-element-border-color: rgba(148, 163, 184, 0.35);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--pico-color);
+  background: radial-gradient(circle at 10% 20%, rgba(96, 165, 250, 0.18), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(244, 114, 182, 0.25), transparent 60%),
+    linear-gradient(180deg, #05060f 0%, #0b1120 45%, #111a2e 100%);
+  background-attachment: fixed;
+}
+
+main {
+  display: block;
+}

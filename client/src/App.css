@@ -1,0 +1,74 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header.container {
+  padding-block: 3rem 2rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: rgba(248, 250, 252, 0.85);
+}
+
+.brand img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.hero {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero h1 {
+  color: var(--pico-color);
+  font-weight: 600;
+}
+
+.hero p {
+  color: rgba(248, 250, 252, 0.78);
+}
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hero-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2rem;
+  border-radius: var(--pico-border-radius);
+  background: var(--pico-card-background-color);
+  border: 1px solid var(--pico-form-element-border-color);
+  color: rgba(248, 250, 252, 0.82);
+}
+
+main.container {
+  flex: 1;
+  padding-bottom: 3rem;
+}
+
+.footer {
+  padding-block: 2rem 3rem;
+  text-align: center;
+  color: rgba(248, 250, 252, 0.6);
+}

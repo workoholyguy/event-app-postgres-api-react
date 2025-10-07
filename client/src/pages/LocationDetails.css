@@ -1,0 +1,46 @@
+.location-details {
+  display: grid;
+  gap: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+.location-details__header {
+  display: grid;
+  gap: 1rem;
+}
+
+.location-details__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: rgba(248, 250, 252, 0.72);
+  margin: 0;
+}
+
+.location-details__header h1 {
+  margin: 0;
+}
+
+.location-details__description {
+  margin: 0;
+  color: rgba(248, 250, 252, 0.75);
+}
+
+.location-details__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.location-details__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block: 1.5rem 2rem;
+}
+
+@media (max-width: 640px) {
+  .location-details {
+    gap: 2rem;
+  }
+}

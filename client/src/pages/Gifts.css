@@ -1,0 +1,29 @@
+.Gifts {
+  display: grid;
+  gap: 2rem;
+}
+
+.location-quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.events-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.noResults,
+.loading-state {
+  text-align: center;
+  padding-block: 3rem;
+  color: var(--pico-muted-color);
+}
+
+.loading-state {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
